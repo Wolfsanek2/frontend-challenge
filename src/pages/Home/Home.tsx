@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useLazyGetAllCatsQuery } from '@/api';
 import styles from './Home.module.scss';
 import { useAppDispatch, useAppSelector } from '@/hooks';
@@ -8,14 +8,15 @@ import { CatsFeed } from '@/components';
 export const Home = () => {
 	const dispatch = useAppDispatch();
 	const allCats = useAppSelector(appSelectors.allCats);
-	const [page, setPage] = useState(0);
+	const page = useAppSelector(appSelectors.currentPage);
 	const [fetchAllCats, { isFetching }] = useLazyGetAllCatsQuery();
 	const loadingTriggerRef = useRef<HTMLDivElement>(null);
+	console.log('page:', page);
 
 	const fetchCats = useCallback(async () => {
 		const cats = await fetchAllCats(page).unwrap();
 		dispatch(appActions.addAllCats(cats));
-		setPage(page + 1);
+		dispatch(appActions.incrementPage());
 	}, [dispatch, fetchAllCats, page]);
 	useEffect(() => {
 		const observer = new IntersectionObserver((entries) => {

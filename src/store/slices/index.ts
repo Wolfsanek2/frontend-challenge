@@ -3,6 +3,7 @@ import { LOCAL_STORAGE_KEYS } from '@/const';
 import type { Cat, ID } from '@/types';
 
 interface AppState {
+	currentPage: number;
 	allCats: Cat[];
 	favoriteCats: Cat[];
 }
@@ -12,6 +13,7 @@ if (!localStorage.getItem(LOCAL_STORAGE_KEYS.favoriteCats)) {
 }
 
 const initialState: AppState = {
+	currentPage: 0,
 	allCats: [],
 	favoriteCats: JSON.parse(
 		localStorage.getItem(LOCAL_STORAGE_KEYS.favoriteCats)!,
@@ -22,6 +24,9 @@ const slice = createSlice({
 	name: 'app',
 	initialState,
 	reducers: {
+		incrementPage(state) {
+			state.currentPage++;
+		},
 		addAllCats(state, action: PayloadAction<Cat[]>) {
 			state.allCats.push(...action.payload);
 		},
@@ -48,6 +53,7 @@ const slice = createSlice({
 		},
 	},
 	selectors: {
+		currentPage: (state) => state.currentPage,
 		allCats: (state) => state.allCats,
 		favoriteCats: (state) => state.favoriteCats,
 	},
