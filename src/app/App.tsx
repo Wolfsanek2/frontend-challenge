@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { Layout } from '@/components';
 import { Favorite, Home } from '@/pages';
 import { store } from '@/store';
+import { PAGE_URLS } from '@/const';
 
 export const App = () => {
 	return (
@@ -10,11 +11,14 @@ export const App = () => {
 			<BrowserRouter>
 				<Routes>
 					<Route element={<Layout />}>
-						<Route path="/" element={<Home />} />
-						<Route path="/favorite" element={<Favorite />} />
+						<Route path={PAGE_URLS.home} element={<Home />} />
+						<Route
+							path={PAGE_URLS.favorite}
+							element={<Favorite />}
+						/>
 						<Route
 							path="*"
-							element={<Navigate to={'/'} replace />}
+							element={<Navigate to={PAGE_URLS.home} replace />}
 						/>
 					</Route>
 				</Routes>

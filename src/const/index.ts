@@ -1,6 +1,8 @@
+const BASE_URL = 'frontend-challenge';
+
 export const PAGE_URLS = {
-	home: '/',
-	favorite: '/favorite',
+	home: `${BASE_URL}/`,
+	favorite: `${BASE_URL}/favorite`,
 };
 
 export const BASE_API_URL = 'https://api.thecatapi.com/v1';
