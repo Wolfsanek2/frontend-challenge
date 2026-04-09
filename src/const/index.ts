@@ -1,4 +1,4 @@
-const BASE_URL = '/frontend-challenge';
+const BASE_URL = '';
 
 export const PAGE_URLS = {
 	home: `${BASE_URL}/`,
