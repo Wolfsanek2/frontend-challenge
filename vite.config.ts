@@ -6,6 +6,7 @@ import svgr from 'vite-plugin-svgr';
 // https://vite.dev/config/
 export default defineConfig({
 	plugins: [react(), svgr({ include: '**/*.svg?react' })],
+	base: '/frontend-challenge/',
 	resolve: {
 		alias: {
 			'@': path.resolve(__dirname, './src'),
