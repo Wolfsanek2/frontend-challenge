@@ -1,0 +1,9 @@
+.header {
+    display: flex;
+    padding-left: 4.5rem;
+    background-color: var(--color-primary-accent);
+
+    &__link {
+        height: 100%;
+    }
+}
