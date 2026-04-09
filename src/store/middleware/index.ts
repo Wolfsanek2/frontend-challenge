@@ -20,10 +20,11 @@ export const appMiddleware: Middleware<unknown, RootState> =
 			const favoriteCats = JSON.parse(
 				localStorage.getItem(LOCAL_STORAGE_KEYS.favoriteCats)!,
 			) as Cat[];
-			favoriteCats.filter((cat) => cat.id !== action.payload);
 			localStorage.setItem(
 				LOCAL_STORAGE_KEYS.favoriteCats,
-				JSON.stringify(favoriteCats),
+				JSON.stringify(
+					favoriteCats.filter((cat) => cat.id !== action.payload),
+				),
 			);
 		}
 
