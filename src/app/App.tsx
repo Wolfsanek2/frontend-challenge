@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
+import { HashRouter, Navigate, Route, Routes } from 'react-router';
 import { Provider } from 'react-redux';
 import { Layout } from '@/components';
 import { Favorite, Home } from '@/pages';
@@ -8,7 +8,7 @@ import { PAGE_URLS } from '@/const';
 export const App = () => {
 	return (
 		<Provider store={store}>
-			<BrowserRouter>
+			<HashRouter>
 				<Routes>
 					<Route element={<Layout />}>
 						<Route path={PAGE_URLS.home} element={<Home />} />
@@ -22,7 +22,7 @@ export const App = () => {
 						/>
 					</Route>
 				</Routes>
-			</BrowserRouter>
+			</HashRouter>
 		</Provider>
 	);
 };
