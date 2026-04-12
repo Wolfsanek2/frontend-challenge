@@ -11,7 +11,6 @@ export const Home = () => {
 	const page = useAppSelector(appSelectors.currentPage);
 	const [fetchAllCats, { isFetching }] = useLazyGetAllCatsQuery();
 	const loadingTriggerRef = useRef<HTMLDivElement>(null);
-	console.log('page:', page);
 
 	const fetchCats = useCallback(async () => {
 		const cats = await fetchAllCats(page).unwrap();
